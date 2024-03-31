@@ -1,4 +1,5 @@
-
+// alert('test')
+// console.log('test')
 const menuBtn = document.querySelector(".fa-bars")
 const side = document.querySelector('#side')
 
