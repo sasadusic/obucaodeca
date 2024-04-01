@@ -31,7 +31,7 @@
                     {% endif %}
                     {% endfor %}
                     {% endif %}
-                    <form action="{% url 'kreiraj_obucu' %}" method="post">
+                    <form action="{% url 'kreiraj_obucu' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
                         {{ formset.management_form }}

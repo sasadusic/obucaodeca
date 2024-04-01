@@ -27,6 +27,20 @@
         <div class="card-body">
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ o.marka }}</p>
             <p class="phar mb-12"><span class="bold">Boja:</span>{{ o.boja }}</p>
+            <p class="phar mb-12"><span class="bold">Slike:</span>{{ o.slike }}</p>
+            <!-- Slike -->
+            {% if o.slike.all %}
+            <div class="image-container">
+                {% for slika in o.slike.all %}
+                {{ slika }}
+                <img src="{{ slika.slika.url }}" alt="Shoe Image">
+                <p class="phar mb-12"><span class="bold">Slike:</span>{{ slika.slika }}</p>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No images available</p>
+{% endif %}
+            <!-- Slike -->
         </div>
         <div class="card-footer">
             <div class="footer-left">

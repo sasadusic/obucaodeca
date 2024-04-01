@@ -26,14 +26,14 @@ class VelicinaOdece(models.Model):
 
 class SlikaObuce(models.Model):
     obuca = models.ForeignKey('Obuca', related_name='slike_obuce', on_delete=models.CASCADE)
-    slika = models.ImageField(upload_to='obuca_slike')
+    slika = models.ImageField(null=True, blank=True, upload_to='obuca_slike')
 
     def __str__(self):
-        return f'Image for {self.obuca.naziv}'
+        return str(self.slika)
 
 class SlikaOdece(models.Model):
     odeca = models.ForeignKey('Odeca', related_name='slike_odece', on_delete=models.CASCADE)
-    slika = models.ImageField(upload_to='odeca_slike')
+    slika = models.ImageField(null=True, blank=True, upload_to='odeca_slike')
 
     def __str__(self):
         return f'Image for {self.odeca.naziv}'
@@ -44,8 +44,8 @@ class Obuca(models.Model):
     marka = models.ForeignKey(Marka, on_delete=models.CASCADE)
     boja = models.ForeignKey(Boja, on_delete=models.CASCADE)
     velicina = models.ForeignKey(VelicinaObuce, on_delete=models.CASCADE)
-    stanje = models.CharField(max_length=50)
-    opis = models.TextField()
+    stanje = models.CharField(max_length=50, null=True, blank=True)
+    opis = models.TextField(null=True, blank=True, )
     slike = models.ManyToManyField(SlikaObuce, related_name='obuce')
 
     def __str__(self):

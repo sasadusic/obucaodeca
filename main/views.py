@@ -123,3 +123,5 @@ def kreiraj_obucu(request):
 def sva_obuca(request):
     obuca = Obuca.objects.all()
     return render(request, 'sva_obuca.html', {'obuca': obuca})
+
+lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, dolorum? Quam sed earum nostrum, amet fuga vel quod pariatur accusamus.'
