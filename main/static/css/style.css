@@ -411,34 +411,70 @@
     border-radius: 8px;
     margin-bottom: var(--space-mid);
 }
-/* Records */
-.r-card-cont{
+
+
+/* Obuca */
+.prod-card-cont{
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-sm);
-    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-mid);
     padding: var(--space-mid);
 }
-.r-card{
+.prod-card-cont .card{
+    flex-direction: column;
+    flex:1;
     position: relative;
     background: #fff;
     border-radius: 10px;
+    /* overflow: hidden; */
+    min-width: 180px;
+    max-width: 400px;
     cursor: pointer;
-    padding: var(--space-mid);
+    padding: 0;
+    /* width: minmax(280px, 400px); */
 }
-.r-card-top{
+.prod-card-cont .card:hover{
+    scale: 1.07
+}
+.prod-card-cont .card-img-cont{
     position: relative;
     width: 100%;
-    margin-bottom: var(--space-mid);
+    z-index: 100;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--space-mid);
+}
+.prod-card-cont .prod-image{
+    object-fit: cover;
+    max-height: 300px;
+}
+.prod-card-cont .card-right{
+    padding: 0 24px 24px 24px;
+    position: relative;
+    width: 100%;
+}
+.prod-card-cont .card-top{
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--space-sm);
     text-align: center;
 }
-.r-card-body{
+.prod-card-cont .card-header{
+    font-size: var(--font-big);
+    font-weight: 900;
+    color: var(--header);
+}
+.prod-card-cont .card-body{
     margin: 0;
     padding: 0;
+    text-align: center;
+    padding-bottom: var(--space-sm);
 }
-.r-card-footer{
+.prod-card-cont .card-footer{
     position: relative;
     width: 100%;
     /* background: #000; */
@@ -447,15 +483,17 @@
     gap: 4px;
     color: var(--text);
 }
-.r-footer-left, .loc, .settings{
+
+.footer-left, .loc, .settings{
     border: 1px solid var(--bg-light);
     padding: 8px;
     border-radius: 3px;
 }
-.r-footer-left{
+.footer-left{
     padding-right: auto;
     flex: 1;
 }
+/* Obuca */
 @media (width <= 1200px) {
     .map{
         width: 0;

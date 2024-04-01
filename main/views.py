@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
+from .forms import ObucaForm, ObucaFormSet
+from .models import Obuca, Odeca
 
 # Create your views here.
 def index(request):
@@ -103,3 +105,21 @@ def delete_profile(request):
         user = User.objects.get(username=request.user)
         user.delete()
         return redirect("index")
+    
+def kreiraj_obucu(request):
+    if request.method == 'POST':
+        form = ObucaForm(request.POST)
+        formset = ObucaFormSet(request.POST, request.FILES)
+        if form.is_valid() and formset.is_valid():
+            obuca = form.save()
+            formset.instance = obuca
+            formset.save()
+            return redirect('index')
+    else:
+        form = ObucaForm()
+        formset = ObucaFormSet()
+    return render(request, 'kreiraj_obucu.html', {'form': form, 'formset': formset})
+
+def sva_obuca(request):
+    obuca = Obuca.objects.all()
+    return render(request, 'sva_obuca.html', {'obuca': obuca})

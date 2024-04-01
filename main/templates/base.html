@@ -27,7 +27,7 @@
                             Pocetna
                         </p>
                     </a>
-            <a class="nav-link" href="#"><i class="fa fa-address-book" aria-hidden="true"></i>
+            <a class="nav-link" href="{% url 'sva_obuca' %}"><i class="fa fa-address-book" aria-hidden="true"></i>
                 <p>
                     Obuca
                 </p>
@@ -41,6 +41,11 @@
                 <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa-car" aria-hidden="true"></i>
                     <p>
                         Admin Panel
+                    </p>
+                </a>
+                <a class="nav-link" href="{% url 'kreiraj_obucu' %}"><i class="fa fa-car" aria-hidden="true"></i>
+                    <p>
+                        Dodaj Obucu
                     </p>
                 </a>
             {% endif %}

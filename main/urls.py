@@ -10,4 +10,7 @@ urlpatterns = [
     path('update_profile/', views.update_profile, name='update_profile'),
     path('change_password/', views.change_password, name='change_password'),
     path('delete_profile/', views.delete_profile, name='delete_profile'),
+    
+    path('kreiraj_obucu/', views.kreiraj_obucu, name='kreiraj_obucu'),
+    path('sva_obuca/', views.sva_obuca, name='sva_obuca'),
 ]
