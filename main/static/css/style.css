@@ -485,6 +485,8 @@
 }
 .prod-detail-card-cont .card{
     width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
 }
 .prod-detail-card-cont .img-detail{
     width: 300px;

@@ -25,7 +25,7 @@
             <p class="phar mb-12"><span class="bold">Boja:</span>{{ obuca.boja }}</p>
             <!-- Samo Slike -->
             {% for slika in slike %}
-                <img src="{{ slika.slika.url }}" alt="Shoe Image">
+                <img class="img-detail img-detail-{{ forloop.counter }}" src="{{ slika.slika.url }}" alt="Shoe Image">
         {% endfor %}
             <!-- Samo Slike -->
         </div>
