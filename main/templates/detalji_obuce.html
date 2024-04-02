@@ -40,6 +40,12 @@
     <p>No images available</p>
 {% endif %}
             <!-- Slike -->
+            <!-- Samo Slike -->
+            {% for slika in slike %}
+                <img src="{{ slika.slika.url }}" alt="Shoe Image">
+                <p class="phar mb-12"><span class="bold">Slika:</span>{{ slika.slika.url }}</p>
+        {% endfor %}
+            <!-- Samo Slike -->
         </div>
         <div class="card-footer">
             <div class="footer-left">

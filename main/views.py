@@ -130,6 +130,7 @@ def sva_obuca(request):
 
 def detalji_obuce(request, pk):
     obuca = Obuca.objects.get(pk=pk)
-    return render(request, 'detalji_obuce.html', {'obuca': obuca})
+    slike = SlikaObuce.objects.filter(obuca=obuca)
+    return render(request, 'detalji_obuce.html', {'obuca': obuca, 'slike':  slike})
 
 lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, dolorum? Quam sed earum nostrum, amet fuga vel quod pariatur accusamus.'
