@@ -11,29 +11,26 @@
     {% endif %}
 <!-- Main -->
 <div class="prod-card-cont">
-    {% for o in obuca %}
     <!-- Card -->
-    <a href="{% url 'detalji_obuce' o.pk %}">
-
-        <div class="card">
-            <div class="card-img-cont">
+    <div class="card">
+        <div class="card-img-cont">
             <img src="{% static 'images/bg-7.png' %}" alt="" class="prod-image">
         </div>
         <div class="card-right">
             
             <div class="card-top">
                 <h2 class="card-header">
-                    {{ o.naziv }}
+                    {{ obuca.naziv }}
                 </h2>
             </div>
         <div class="card-body">
-            <p class="phar big mb-12"><span class="bold">Marka:</span>{{ o.marka }}</p>
-            <p class="phar mb-12"><span class="bold">Boja:</span>{{ o.boja }}</p>
-            <p class="phar mb-12"><span class="bold">Slike:</span>{{ o.slike }}</p>
+            <p class="phar big mb-12"><span class="bold">Marka:</span>{{ obuca.marka }}</p>
+            <p class="phar mb-12"><span class="bold">Boja:</span>{{ obuca.boja }}</p>
+            <p class="phar mb-12"><span class="bold">Slike:</span>{{ obuca.slike }}</p>
             <!-- Slike -->
-            {% if o.slike.all %}
+            {% if obuca.slike.all %}
             <div class="image-container">
-                {% for slika in o.slike.all %}
+                {% for slika in obuca.slike.all %}
                 {{ slika }}
                 <img src="{{ slika.slika.url }}" alt="Shoe Image">
                 <p class="phar mb-12"><span class="bold">Slike:</span>{{ slika.slika.url }}</p>
@@ -43,12 +40,6 @@
     <p>No images available</p>
 {% endif %}
             <!-- Slike -->
-            <!-- Samo Slike -->
-            {% for slika in slike %}
-                <img src="{{ slika.slika.url }}" alt="Shoe Image">
-                <p class="phar mb-12"><span class="bold">Slika:</span>{{ slika.slika.url }}</p>
-        {% endfor %}
-            <!-- Samo Slike -->
         </div>
         <div class="card-footer">
             <div class="footer-left">
@@ -61,9 +52,7 @@
         </div>
     </div>
 </div>
-</a>
 <!-- Card -->
-{% endfor %}
 
 </div>
 <!-- Main -->

@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
 from .forms import ObucaForm, ObucaFormSet
-from .models import Obuca, Odeca
+from .models import Obuca, Odeca, SlikaObuce, SlikaOdece
 
 # Create your views here.
 def index(request):
@@ -122,6 +122,14 @@ def kreiraj_obucu(request):
 
 def sva_obuca(request):
     obuca = Obuca.objects.all()
-    return render(request, 'sva_obuca.html', {'obuca': obuca})
+    slike = SlikaObuce.objects.all()
+    for o in obuca:   
+        for slika in o.slike.all():
+            print(slika.slika.url)
+    return render(request, 'sva_obuca.html', {'obuca': obuca, 'slike': slike})
+
+def detalji_obuce(request, pk):
+    obuca = Obuca.objects.get(pk=pk)
+    return render(request, 'detalji_obuce.html', {'obuca': obuca})
 
 lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, dolorum? Quam sed earum nostrum, amet fuga vel quod pariatur accusamus.'

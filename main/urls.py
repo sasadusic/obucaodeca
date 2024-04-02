@@ -13,4 +13,5 @@ urlpatterns = [
     
     path('kreiraj_obucu/', views.kreiraj_obucu, name='kreiraj_obucu'),
     path('sva_obuca/', views.sva_obuca, name='sva_obuca'),
+    path('detalji_obuce/<int:pk>/', views.detalji_obuce, name='detalji_obuce'),
 ]
