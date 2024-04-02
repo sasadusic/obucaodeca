@@ -483,6 +483,12 @@
     gap: 4px;
     color: var(--text);
 }
+.prod-detail-card-cont .card{
+    width: 100%;
+}
+.prod-detail-card-cont .img-detail{
+    width: 300px;
+}
 
 .footer-left, .loc, .settings{
     border: 1px solid var(--bg-light);

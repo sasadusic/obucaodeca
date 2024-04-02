@@ -10,12 +10,9 @@
     </div>
     {% endif %}
 <!-- Main -->
-<div class="prod-card-cont">
+<div class="prod-detail-card-cont">
     <!-- Card -->
     <div class="card">
-        <div class="card-img-cont">
-            <img src="{{ obuca.glavnaSlika.url }}" alt="" class="prod-image">
-        </div>
         <div class="card-right">
             
             <div class="card-top">
@@ -26,24 +23,9 @@
         <div class="card-body">
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ obuca.marka }}</p>
             <p class="phar mb-12"><span class="bold">Boja:</span>{{ obuca.boja }}</p>
-            <p class="phar mb-12"><span class="bold">Slike:</span>{{ obuca.slike }}</p>
-            <!-- Slike -->
-            {% if obuca.slike.all %}
-            <div class="image-container">
-                {% for slika in obuca.slike.all %}
-                {{ slika }}
-                <img src="{{ slika.slika.url }}" alt="Shoe Image">
-                <p class="phar mb-12"><span class="bold">Slike:</span>{{ slika.slika.url }}</p>
-        {% endfor %}
-    </div>
-{% else %}
-    <p>No images available</p>
-{% endif %}
-            <!-- Slike -->
             <!-- Samo Slike -->
             {% for slika in slike %}
                 <img src="{{ slika.slika.url }}" alt="Shoe Image">
-                <p class="phar mb-12"><span class="bold">Slika:</span>{{ slika.slika.url }}</p>
         {% endfor %}
             <!-- Samo Slike -->
         </div>

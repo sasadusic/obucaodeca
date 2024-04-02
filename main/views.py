@@ -114,7 +114,7 @@ def kreiraj_obucu(request):
             obuca = form.save()
             formset.instance = obuca
             formset.save()
-            return redirect('index')
+            return redirect('sva_obuca')
     else:
         form = ObucaForm()
         formset = ObucaFormSet()
