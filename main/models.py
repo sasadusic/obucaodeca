@@ -46,7 +46,8 @@ class Obuca(models.Model):
     velicina = models.ForeignKey(VelicinaObuce, on_delete=models.CASCADE)
     stanje = models.CharField(max_length=50, null=True, blank=True)
     opis = models.TextField(null=True, blank=True, )
-    slike = models.ManyToManyField(SlikaObuce, related_name='obuce')
+    glavnaSlika = models.ImageField(upload_to='obuca_slike', null=True, blank=True)
+    slike = models.ManyToManyField(SlikaObuce, related_name='obuce', null=True, blank=True)
 
     def __str__(self):
         return self.naziv

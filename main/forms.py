@@ -62,7 +62,7 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 class ObucaForm(forms.ModelForm):
     class Meta:
         model = Obuca
-        fields = ['naziv', 'cena', 'marka', 'boja', 'velicina', 'stanje', 'opis']
+        fields = ['naziv', 'cena', 'marka', 'boja', 'velicina', 'stanje', 'opis', 'glavnaSlika']
         widgets = {
             'naziv': forms.TextInput(attrs={'class': 'input'}),
             'cena': forms.NumberInput(attrs={'class': 'input'}),

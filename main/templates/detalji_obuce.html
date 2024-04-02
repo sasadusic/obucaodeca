@@ -14,7 +14,7 @@
     <!-- Card -->
     <div class="card">
         <div class="card-img-cont">
-            <img src="{% static 'images/bg-7.png' %}" alt="" class="prod-image">
+            <img src="{{ obuca.glavnaSlika.url }}" alt="" class="prod-image">
         </div>
         <div class="card-right">
             
@@ -43,7 +43,7 @@
         </div>
         <div class="card-footer">
             <div class="footer-left">
-                {{ o.cena }}€
+                {{ obuca.cena }}€
             </div>
             <div class="loc"><i class="fa-solid fa-location-dot"></i>
             </div>

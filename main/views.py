@@ -108,7 +108,7 @@ def delete_profile(request):
     
 def kreiraj_obucu(request):
     if request.method == 'POST':
-        form = ObucaForm(request.POST)
+        form = ObucaForm(request.POST, request.FILES)
         formset = ObucaFormSet(request.POST, request.FILES)
         if form.is_valid() and formset.is_valid():
             obuca = form.save()
