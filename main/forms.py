@@ -71,6 +71,7 @@ class ObucaForm(forms.ModelForm):
             'velicina': forms.Select(attrs={'class': 'input'}),
             'stanje': forms.TextInput(attrs={'class': 'input'}),
             'opis': forms.Textarea(attrs={'class': 'input'}),
+            'glavnaSlika': forms.ClearableFileInput(attrs={'class': 'input'}),
         }
 
 class SlikaObuceForm(forms.ModelForm):

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-    <h1 class="header p-24">Customer Relation Management</h1>
+    <h1 class="header p-24">Obuca I Odeca</h1>
     {% if messages%}
     <div class="card-cont">
         {% for m in messages %}
@@ -20,7 +20,7 @@
                 
                 <div class="card-top">
                     <h1 class="card-header">
-                        Register Here
+                        Dodaj Novi Artikal Obuce
                     </h1>
                 </div>
                 <div class="card-body">
@@ -38,7 +38,7 @@
                         {% for form in formset %}
                             {{ form.as_p }}
                         {% endfor %}
-                    <button type="submit" id="submit" class="btn btn-color">Register Here</button>
+                    <button type="submit" id="submit" class="btn btn-color">Dodaj Obucu</button>
                 </form>
             </div>
         </div>

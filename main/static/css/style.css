@@ -69,6 +69,7 @@
     padding-top: 32px;
     /* background: #000; */
     z-index: 1000;
+    border-right: 1px solid var(--bg-light);
 }
 .logo{
     position: relative;
@@ -269,10 +270,11 @@
 .down-phar{
     font-weight: 500;
 }
-.label{
+.label, label{
     font-size: var(--font-big);
     font-weight: 700;
     color: var(--label);
+    margin-bottom: var(--space-sm);
 }
 .phar{
     font-size: var(--font-mid);
@@ -429,8 +431,8 @@
     background: #fff;
     border-radius: 10px;
     /* overflow: hidden; */
-    min-width: 180px;
-    max-width: 400px;
+    min-width: 150px;
+    max-width: 350px;
     cursor: pointer;
     padding: 0;
     /* width: minmax(280px, 400px); */
@@ -471,7 +473,7 @@
 .prod-card-cont .card-body{
     margin: 0;
     padding: 0;
-    text-align: center;
+    text-align: left;
     padding-bottom: var(--space-sm);
 }
 .prod-card-cont .card-footer{
@@ -483,13 +485,54 @@
     gap: 4px;
     color: var(--text);
 }
-.prod-detail-card-cont .card{
+#card-datails{
     width: 100%;
     min-height: 100vh;
     border-radius: 0;
+    display: flex;
+    flex-direction: row !important;
+    flex: 1;
+    padding: 80px 10vw ;
+    background: #fff;
 }
-.prod-detail-card-cont .img-detail{
-    width: 300px;
+#card-datails > .card-left {
+    flex: 1;
+    padding: var(--space-big);
+}
+#card-datails > .card-right {
+    flex: 1;
+}
+#card-datails .card-header{
+    font-size: 60px;
+    color: var(--main);
+}
+#card-datails .phar{
+    font-size: var(--font-big);
+    border-bottom: 1px solid var(--bg-light);
+    padding-bottom: var(--space-sm);
+}
+.cena-cont{
+    font-size: 32px;
+    margin-bottom: var(--space-big);
+}
+.cena-span{
+    margin-right: var(--space-sm);
+}
+.cena{
+    color: var(--main);
+}
+.detail-img-cont{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+img.img-detail{
+    grid-row: span 2;
+    width: 100%;
+}
+img.img-detail-1{
+    grid-row: 1 / 2 !important;
+    grid-column: 1 / 7 !important;
+    /* width: 100%; */
 }
 
 .footer-left, .loc, .settings{

@@ -10,11 +10,18 @@
     </div>
     {% endif %}
 <!-- Main -->
-<div class="prod-detail-card-cont">
     <!-- Card -->
-    <div class="card">
+    <div id="card-datails" class="card-details">
+        <div class="card-left">
+            <!-- Slike -->
+            <div class="detail-img-cont" style="display: grid; grid-template-columns: repeat(6, 1fr);">
+                {% for slika in slike %}
+                <img class="img-detail img-detail-{{ forloop.counter }}" src="{{ slika.slika.url }}" alt="Shoe Image" style="grid-column: span 2;">
+                {% endfor %}
+            </div>
+            <!-- Slike -->
+        </div>
         <div class="card-right">
-            
             <div class="card-top">
                 <h2 class="card-header">
                     {{ obuca.naziv }}
@@ -23,25 +30,14 @@
         <div class="card-body">
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ obuca.marka }}</p>
             <p class="phar mb-12"><span class="bold">Boja:</span>{{ obuca.boja }}</p>
-            <!-- Samo Slike -->
-            {% for slika in slike %}
-                <img class="img-detail img-detail-{{ forloop.counter }}" src="{{ slika.slika.url }}" alt="Shoe Image">
-        {% endfor %}
-            <!-- Samo Slike -->
-        </div>
-        <div class="card-footer">
-            <div class="footer-left">
-                {{ obuca.cena }}€
-            </div>
-            <div class="loc"><i class="fa-solid fa-location-dot"></i>
-            </div>
-            <div class="settings"><i class="fa-solid fa-gear"></i>
-            </div>
+            <p class="phar mb-12"><span class="bold">Velicina:</span>{{ obuca.velicina }}</p>
+            <p class="phar mb-12"><span class="bold">Opis:</span>{{ obuca.opis }}</p>
+            <div class="cena-cont"><span class="cena-span">Cena:</span><span class="cena bold">{{ obuca.cena }}€</span></div>
+            <p class="phar"><span class="bold">Nacin kupovine:</span>Na 060 000 000 poslati: Ime i Prezime, Adresu, Broj telefona i Sifru proizvoda ili Pozvati Na telefon Od 08:00 - 16:00 radnim danom</p>
+            <button class="btn btn-color">Dodaj u Korpu</button>
         </div>
     </div>
 </div>
 <!-- Card -->
-
-</div>
 <!-- Main -->
 {% endblock %}

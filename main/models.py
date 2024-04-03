@@ -13,13 +13,13 @@ class Boja(models.Model):
         return self.boja
     
 class VelicinaObuce(models.Model):
-    velicina = models.PositiveIntegerField()
+    velicina = models.PositiveIntegerField(unique=True)
 
     def __str__(self):
         return str(self.velicina)
 
 class VelicinaOdece(models.Model):
-    velicina = models.PositiveIntegerField()
+    velicina = models.CharField(max_length=20, unique=True) # TODO: dodati validator za format velicine odece
 
     def __str__(self):
         return str(self.velicina)
@@ -40,6 +40,7 @@ class SlikaOdece(models.Model):
 
 class Obuca(models.Model):
     naziv = models.CharField(max_length=100)
+    sifra = models.PositiveIntegerField(null=True, blank=True, unique=True)
     cena = models.PositiveIntegerField()
     marka = models.ForeignKey(Marka, on_delete=models.CASCADE)
     boja = models.ForeignKey(Boja, on_delete=models.CASCADE)
@@ -54,6 +55,7 @@ class Obuca(models.Model):
 
 class Odeca(models.Model):
     naziv = models.CharField(max_length=100)
+    sifra = models.PositiveIntegerField(null=True, blank=True, unique=True)
     tip = models.CharField(max_length=100)
     cena = models.PositiveIntegerField()
     marka = models.ForeignKey(Marka, on_delete=models.CASCADE)
