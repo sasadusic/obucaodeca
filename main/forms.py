@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
-from .models import Obuca, SlikaObuce
+from .models import Obuca, SlikaObuce, Boja, VelicinaObuce
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'class': 'input username', 'placeholder': 'Email'})) 
@@ -60,15 +60,16 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 # Forma za Ubacivanje Obuce
         
 class ObucaForm(forms.ModelForm):
+    boja = forms.ModelMultipleChoiceField(queryset=Boja.objects.all(), widget=forms.CheckboxSelectMultiple)
+    velicina = forms.ModelMultipleChoiceField(queryset=VelicinaObuce.objects.all(), widget=forms.CheckboxSelectMultiple)
+
     class Meta:
         model = Obuca
-        fields = ['naziv', 'cena', 'marka', 'boja', 'velicina', 'stanje', 'opis', 'glavnaSlika']
+        fields = ['naziv', 'cena', 'marka', 'stanje', 'opis', 'glavnaSlika']
         widgets = {
             'naziv': forms.TextInput(attrs={'class': 'input'}),
             'cena': forms.NumberInput(attrs={'class': 'input'}),
             'marka': forms.Select(attrs={'class': 'input'}),
-            'boja': forms.Select(attrs={'class': 'input'}),
-            'velicina': forms.Select(attrs={'class': 'input'}),
             'stanje': forms.TextInput(attrs={'class': 'input'}),
             'opis': forms.Textarea(attrs={'class': 'input'}),
             'glavnaSlika': forms.ClearableFileInput(attrs={'class': 'input'}),

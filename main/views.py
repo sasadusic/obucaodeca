@@ -5,7 +5,8 @@ from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
 from .forms import ObucaForm, ObucaFormSet
-from .models import Obuca, Odeca, SlikaObuce, SlikaOdece
+from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce
+from django.db import transaction
 
 # Create your views here.
 def index(request):
@@ -111,10 +112,18 @@ def kreiraj_obucu(request):
         form = ObucaForm(request.POST, request.FILES)
         formset = ObucaFormSet(request.POST, request.FILES)
         if form.is_valid() and formset.is_valid():
-            obuca = form.save()
-            formset.instance = obuca
-            formset.save()
+            with transaction.atomic():
+                obuca = form.save()
+                formset.instance = obuca
+                formset.save()
+                # Sačuvajte boje povezane sa obućom
+                obuca.boja.set(form.cleaned_data['boja'])
+                # Sačuvajte veličine povezane sa obućom
+                obuca.velicina.set(form.cleaned_data['velicina'])
+            messages.success(request, 'Obuća je uspešno dodata.')
             return redirect('sva_obuca')
+        else:
+            messages.error(request, 'Došlo je do greške. Molimo pokušajte ponovo.')
     else:
         form = ObucaForm()
         formset = ObucaFormSet()

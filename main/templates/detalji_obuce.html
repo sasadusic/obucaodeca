@@ -29,8 +29,16 @@
             </div>
         <div class="card-body">
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ obuca.marka }}</p>
-            <p class="phar mb-12"><span class="bold">Boja:</span>{{ obuca.boja }}</p>
-            <p class="phar mb-12"><span class="bold">Velicina:</span>{{ obuca.velicina }}</p>
+            <p class="phar mb-12"><span class="bold">Dostupne Boje:</span>
+                {% for boja in obuca.boja.all %}
+                    {{ boja }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p class="phar mb-12"><span class="bold">Dostupne Velicine:</span>
+                {% for velicina in obuca.velicina.all %}
+                {{ velicina }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
             <p class="phar mb-12"><span class="bold">Opis:</span>{{ obuca.opis }}</p>
             <div class="cena-cont"><span class="cena-span">Cena:</span><span class="cena bold">{{ obuca.cena }}€</span></div>
             <p class="phar"><span class="bold">Nacin kupovine:</span>Na 060 000 000 poslati: Ime i Prezime, Adresu, Broj telefona i Sifru proizvoda ili Pozvati Na telefon Od 08:00 - 16:00 radnim danom</p>

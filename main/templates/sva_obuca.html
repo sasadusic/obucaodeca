@@ -29,7 +29,11 @@
             </div>
         <div class="card-body">
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ o.marka }}</p>
-            <p class="phar mb-12"><span class="bold">Boja:</span>{{ o.boja }}</p>
+            <p class="phar mb-12"><span class="bold">Boje:</span>
+                {% for boja in o.boja.all %}
+                    {{ boja }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
         </div>
         <div class="card-footer">
             <div class="footer-left">
