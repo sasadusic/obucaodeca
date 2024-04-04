@@ -350,7 +350,7 @@
 }
 .new-card-img{
     position: relative;
-    height: 1400px;
+    height: 1160px;
     width: 40%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -412,7 +412,6 @@
 .label, label{
     font-size: var(--font-mid);
     margin-bottom: var(--space-sm);
-    margin-bottom: 50px;
 }
 .input{
     position: relative;
@@ -541,6 +540,9 @@ input[type=checkbox]{
     font-size: var(--font-big);
     border-bottom: 1px solid var(--bg-light);
     padding-bottom: var(--space-sm);
+}
+#card-datails .phar.opis{
+    line-height: 24px;
 }
 .span{
     padding: 8px 16px;
