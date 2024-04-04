@@ -132,14 +132,22 @@ def kreiraj_obucu(request):
 def sva_obuca(request):
     obuca = Obuca.objects.all()
     slike = SlikaObuce.objects.all()
-    for o in obuca:   
-        for slika in o.slike.all():
-            print(slika.slika.url)
     return render(request, 'sva_obuca.html', {'obuca': obuca, 'slike': slike})
 
 def detalji_obuce(request, pk):
     obuca = Obuca.objects.get(pk=pk)
     slike = SlikaObuce.objects.filter(obuca=obuca)
     return render(request, 'detalji_obuce.html', {'obuca': obuca, 'slike':  slike})
+
+def obrisi_obucu(request, pk):
+    obuca = Obuca.objects.get(pk=pk)
+    obuca.delete()
+    return redirect('sva_obuca')
+
+@login_required(login_url='login_user')
+def korpa(request):
+    obuca = Obuca.objects.all()
+    slike = SlikaObuce.objects.all()
+    return  render(request, 'korpa.html', {'obuca': obuca, 'slike':  slike})
 
 lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, dolorum? Quam sed earum nostrum, amet fuga vel quod pariatur accusamus.'

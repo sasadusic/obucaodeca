@@ -10,7 +10,7 @@
     </div>
     {% endif %}
 <!-- Main -->
-<h1 class="header p-24">Nasa Ponuda Obuce</h1>
+<h1 class="header p-24">Vasa Korpa</h1>
 <div class="prod-card-cont">
     {% for o in obuca %}
     <!-- Card -->
@@ -34,7 +34,6 @@
                     {{ boja }}{% if not forloop.last %}, {% endif %}
                 {% endfor %}
             </p>
-            <a href="{% url 'obrisi_obucu' o.pk %}" class="btn btn-danger mt-12 mb-12" onclick="return confirm('Jesi li siguran');">Obrisi Artikal</a>
         </div>
         <div class="card-footer">
             <div class="footer-left">

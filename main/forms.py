@@ -65,9 +65,10 @@ class ObucaForm(forms.ModelForm):
 
     class Meta:
         model = Obuca
-        fields = ['naziv', 'cena', 'marka', 'stanje', 'opis', 'glavnaSlika']
+        fields = ['naziv', 'sifra', 'cena', 'marka', 'stanje', 'opis', 'glavnaSlika']
         widgets = {
             'naziv': forms.TextInput(attrs={'class': 'input'}),
+            'sifra': forms.TextInput(attrs={'class': 'input'}),
             'cena': forms.NumberInput(attrs={'class': 'input'}),
             'marka': forms.Select(attrs={'class': 'input'}),
             'stanje': forms.TextInput(attrs={'class': 'input'}),
