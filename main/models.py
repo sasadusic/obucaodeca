@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+import os
 
 class Marka(models.Model):
     imeMarke = models.CharField(max_length=100, unique=True)
@@ -37,6 +40,13 @@ class SlikaOdece(models.Model):
 
     def __str__(self):
         return f'Image for {self.odeca.naziv}'
+    
+@receiver(post_delete, sender=SlikaObuce)
+def delete_slikaobuce_file(sender, instance, **kwargs):
+    # Delete file from filesystem when corresponding `SlikaObuce` object is deleted.
+    if instance.slika:
+        if os.path.isfile(instance.slika.path):
+            os.remove(instance.slika.path)
 
 class Obuca(models.Model):
     naziv = models.CharField(max_length=100)

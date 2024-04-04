@@ -129,6 +129,7 @@ def kreiraj_obucu(request):
         formset = ObucaFormSet()
     return render(request, 'kreiraj_obucu.html', {'form': form, 'formset': formset})
 
+
 def sva_obuca(request):
     obuca = Obuca.objects.all()
     slike = SlikaObuce.objects.all()
@@ -141,7 +142,9 @@ def detalji_obuce(request, pk):
 
 def obrisi_obucu(request, pk):
     obuca = Obuca.objects.get(pk=pk)
+    slike = SlikaObuce.objects.filter(obuca=obuca)
     obuca.delete()
+    slike.delete()
     return redirect('sva_obuca')
 
 @login_required(login_url='login_user')
