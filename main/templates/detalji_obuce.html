@@ -43,6 +43,9 @@
             <div class="cena-cont"><span class="cena-span">Cena:</span><span class="cena bold">{{ obuca.cena }}€</span></div>
             <p class="phar"><span class="bold">Nacin kupovine:</span>Na 060 000 000 poslati: Ime i Prezime, Adresu, Broj telefona i Sifru proizvoda ili Pozvati Na telefon Od 08:00 - 16:00 radnim danom</p>
             <button class="btn btn-color mt-24">Dodaj u Korpu <i class="fa-solid fa-cart-plus" style="color: #fff;"></i></button>
+            {% if user.is_superuser %}
+            <a href="{% url 'obrisi_obucu' obuca.pk %}" class="btn btn-danger mt-12 mb-12"  onclick="return confirm('Jesi li siguran');">Obrisi Artikal</a>
+            {% endif %}
         </div>
     </div>
 </div>
