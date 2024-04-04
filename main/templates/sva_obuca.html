@@ -34,7 +34,9 @@
                     {{ boja }}{% if not forloop.last %}, {% endif %}
                 {% endfor %}
             </p>
+            {% if user.is_superuser %}
             <a href="{% url 'obrisi_obucu' o.pk %}" class="btn btn-danger mt-12 mb-12" onclick="return confirm('Jesi li siguran');">Obrisi Artikal</a>
+            {% endif %}
         </div>
         <div class="card-footer">
             <div class="footer-left">
