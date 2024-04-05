@@ -79,3 +79,9 @@ class Odeca(models.Model):
     def __str__(self):
         return self.naziv
     
+class NacinKupovine(models.Model):
+    naziv = models.CharField(max_length=100, null=True, blank=True, unique=True)
+    text = models.CharField(max_length=1000, null=True, blank=True, unique=True)
+
+    def __str__(self):
+        return self.naziv

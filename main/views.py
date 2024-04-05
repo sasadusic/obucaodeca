@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
 from .forms import ObucaForm, ObucaFormSet
-from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce
+from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce, NacinKupovine
 from django.db import transaction
 
 # Create your views here.
@@ -138,7 +138,8 @@ def sva_obuca(request):
 def detalji_obuce(request, pk):
     obuca = Obuca.objects.get(pk=pk)
     slike = SlikaObuce.objects.filter(obuca=obuca)
-    return render(request, 'detalji_obuce.html', {'obuca': obuca, 'slike':  slike})
+    nacin = NacinKupovine.objects.get(naziv='Za-obucu')
+    return render(request, 'detalji_obuce.html', {'obuca': obuca, 'slike':  slike, 'nacin': nacin})
 
 def obrisi_obucu(request, pk):
     obuca = Obuca.objects.get(pk=pk)

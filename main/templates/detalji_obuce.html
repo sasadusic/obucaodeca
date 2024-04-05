@@ -14,9 +14,11 @@
     <div id="card-datails" class="card-details">
         <div class="card-left">
             <!-- Slike -->
-            <div class="detail-img-cont" style="display: grid; grid-template-columns: repeat(6, 1fr);">
+            <div class="detail-img-cont">
+                <div id="arrow-left" class="arrow-left"><i class="fa-solid fa-chevron-left"></i></div>
+                <div id="arrow-left" class="arrow-right"><i class="fa-solid fa-angle-right"></i></div>
                 {% for slika in slike %}
-                <img class="img-detail img-detail-{{ forloop.counter }}" src="{{ slika.slika.url }}" alt="Shoe Image" style="grid-column: span 2;">
+                <img class="img-detail img-detail-{{ forloop.counter }}" src="{{ slika.slika.url }}" alt="Shoe Image">
                 {% endfor %}
             </div>
             <!-- Slike -->
@@ -28,20 +30,21 @@
                 </h2>
             </div>
         <div class="card-body">
+            <p class="phar big mb-12"><span class="bold">Sifra:</span>{{ obuca.sifra }}</p>
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ obuca.marka }}</p>
-            <p class="phar mb-12"><span class="bold">Dostupne Boje:</span>
+            <div class="color-cont mb-12"><div class="boje bold">Dostupne boje:</div>
                 {% for boja in obuca.boja.all %}
-                    <span class="span">{{ boja }}</span>{% if not forloop.last %} {% endif %}
+                    <div class="span">{{ boja }}</div>{% if not forloop.last %} {% endif %}
                 {% endfor %}
-            </p>
-            <p class="phar mb-12"><span class="bold">Dostupne Velicine:</span>
+            </div>
+            <div class="color-cont mb-12"><div class="boje bold">Dostupne velicine:</div>
                 {% for velicina in obuca.velicina.all %}
-                <span class="span">{{ velicina }}</span>{% if not forloop.last %} {% endif %}
+                <div class="span">{{ velicina }}</div>{% if not forloop.last %} {% endif %}
                 {% endfor %}
-            </p>
+            </div>
             <p class="phar opis mb-12"><span class="bold">Opis:</span>{{ obuca.opis }}</p>
             <div class="cena-cont"><span class="cena-span">Cena:</span><span class="cena bold">{{ obuca.cena }}€</span></div>
-            <p class="phar opis"><span class="bold">Nacin kupovine:</span>Na 060 000 000 poslati: Ime i Prezime, Adresu, Broj telefona i Sifru proizvoda ili Pozvati Na telefon Od 08:00 - 16:00 radnim danom<br>Robu saljemo D Expressom</p>
+            <p class="phar opis"><span class="bold">Nacin kupovine:</span>{{ nacin.text }}</p>
             <button class="btn btn-color mt-24">Dodaj u Korpu <i class="fa-solid fa-cart-plus" style="color: #fff;"></i></button>
             {% if user.is_superuser %}
             <a href="{% url 'obrisi_obucu' obuca.pk %}" class="btn btn-danger mt-12 mb-12"  onclick="return confirm('Jesi li siguran');">Obrisi Artikal</a>
