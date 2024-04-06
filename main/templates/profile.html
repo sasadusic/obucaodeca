@@ -22,10 +22,12 @@
             <div class="btn-cont mt-24">
                 <a href="{% url 'update_profile' %}" class="btn btn-color mb-12">Profile Settings</a>
                 <a href="{% url 'change_password' %}" class="btn btn-warnning">Change Password</a>
+                {% if not user.is_superuser %}
                 <form class="mt-24" method="post" action="{% url 'delete_profile' %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Dali ste sigurni da zelite da obrisete svoj profil?');">Delete Profile</button>
-                  </form>
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Dali ste sigurni da zelite da obrisete svoj profil?');">Delete Profile</button>
+                </form>
+                {% endif %}
             </div>
     </div>
     <div class="home-right">

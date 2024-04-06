@@ -56,8 +56,8 @@
 .p-12{
     padding: var(--space-sm);
 }
-.pl-24{
-    padding-left:  var(--space-mid);
+.pnd-24{
+    padding: 24px 24px 0px 24px;
 }
 #side{
     position: fixed;
@@ -196,8 +196,8 @@
 #home{
     position: relative;
     min-height: 100vh;
-    width: calc(100vw - 240px);
-    margin-left: auto;
+    width: calc(100% - 240px);
+    margin-left:240px;
     background: var(--main-trans-02);
 }
 .home-over{
@@ -250,6 +250,7 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    object-fit: cover;
 }
 .home-down{
     position: relative;
@@ -337,7 +338,6 @@
     border-radius: 10px;
     display: flex;
     overflow: hidden;
-    margin-bottom: 32px;
 }
 .card-img{
     position: relative;
@@ -348,7 +348,14 @@
 }
 .reg-card-img{
     position: relative;
-    height: 500px !important;
+    height: 665px !important;
+    width: 40%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.update-card-img{
+    position: relative;
+    height: 496px !important;
     width: 40%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -374,6 +381,13 @@
     object-fit: cover;
 }
 .reg-card-img img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    object-fit: cover;
+}
+.update-card-img img{
     position: relative;
     width: 100%;
     height: 100%;
@@ -453,11 +467,19 @@ input[type=checkbox]{
 
 
 /* Obuca */
+.search-cont{
+    display: flex;
+    align-items: center;
+    padding: 24px 24px 0 24px;
+}
+.search-cont .input{
+    margin: 0;
+}
 .prod-card-cont{
     position: relative;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-mid);
     padding: var(--space-mid);
 }
@@ -467,8 +489,6 @@ input[type=checkbox]{
     position: relative;
     background: #fff;
     border-radius: 10px;
-    min-width: 190px;
-    max-width: 350px;
     cursor: pointer;
     padding: 0;
 }
@@ -486,8 +506,9 @@ input[type=checkbox]{
     padding-bottom: var(--space-mid);
 }
 .prod-card-cont .prod-image{
-    object-fit: cover;
-    max-height: 300px;
+    width: 100%;
+    object-fit: contain;
+    /* max-height: 300px; */
 }
 .prod-card-cont .card-right{
     padding: 0 24px 24px 24px;
@@ -612,8 +633,8 @@ img.img-detail-1{
     border: none;
     outline: none;
     margin: auto;
-    width: 65vw;
-    padding: 26px;
+    width: 55vw;
+    padding: 0 26px;
     background: #00000000;
     /* background: #0000006d; */
     /* box-shadow: 0 0 0 700px #0000006d; */
@@ -668,10 +689,12 @@ img.img-detail-1{
     padding-right: auto;
     flex: 1;
 }
-.pl-24{
-    padding-left:  var(--space-mid);
-}
 /* Obuca */
+@media (width <= 1600px) {
+    .prod-card-cont{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 @media (width <= 1200px) {
     .map{
         width: 0;
@@ -683,6 +706,9 @@ img.img-detail-1{
     .home-down{
         grid-template-columns: repeat(4, 1fr);
         gap: 16px 0;
+    }
+    .prod-card-cont{
+        grid-template-columns: repeat(2, 1fr);
     }
     #card-datails{
         flex-direction: column;
@@ -701,19 +727,24 @@ img.img-detail-1{
         padding: 0 !important;
     }
     .card-right{
-        padding: 0;
         width: 100% !important;
+    }
+    .image-modal{
+        width: 70vw;
     }
 }
 /* Large devices (desktops, 992px and up) */
 @media (width <= 992px) {
+    .home-header{
+        font-size: 32px;
+    }
     .home-up{
         flex-direction: column-reverse;
     }
     .home-left{
         width: 100%;
         /* height: calc(100vh - 105px); */
-        height: 110vh;
+        height: 60vh;
         padding-left: 24px;
     }
     .home-right{
@@ -724,6 +755,7 @@ img.img-detail-1{
     }
     .right-img{
         border-radius: 0;
+        object-fit: cover;
     }
     .home-down{
         grid-template-columns: repeat(3, 1fr);
@@ -741,7 +773,7 @@ img.img-detail-1{
         background: transparent;
         filter: blur(10px);
     }
-    .card .card-image, .card .reg-card-img{
+    .card .card-image, .card .reg-card-img, .card .update-card-img, .card .new-card-img{
         display: none;
     }
     .card .card-right{
@@ -777,6 +809,9 @@ img.img-detail-1{
     #side.active .logo p{
         margin-right: 0;
     }
+    .prod-card-cont{
+        grid-template-columns: repeat(1, 1fr);
+    }
     #side.active .logo .fa{
         margin-right: 24px;
     }
@@ -802,5 +837,8 @@ img.img-detail-1{
     }
     .cont{
         padding-left: 24px;
+    }
+    .home-left{
+        height: 40vh;
     }
 }

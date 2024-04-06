@@ -16,8 +16,6 @@ const detailimageNum = detailImages.length
 let curImage = 1
 
 arrowleft.onclick = () => {
-    // alert('left')
-    // console.log('left')
     document.querySelector(`.img-detail-${curImage}`).style.display = 'none'
     curImage--
     curImage = curImage < 1 ? detailimageNum : curImage
@@ -25,8 +23,6 @@ arrowleft.onclick = () => {
 }
 
 arrowRight.onclick = () => {
-    // alert('right')
-    // console.log('right')
     document.querySelector(`.img-detail-${curImage}`).style.display = 'none'
     curImage++
     curImage = curImage > detailimageNum ? 1 : curImage
@@ -77,3 +73,9 @@ modalRight.onclick = () => {
     curModalImage = curModalImage > modalimageNum ? 1 : curModalImage
     document.querySelector(`.modal-item-${curModalImage}`).style.display = 'block'
 }
+
+// Search opcija u sva obuca
+document.getElementById('search-input').addEventListener('input', function() {
+    // Čim se unese novo slovo, automatski podnosimo formu
+    document.getElementById('search-form').submit();
+});

@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from .forms import ObucaForm, ObucaFormSet
 from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce, NacinKupovine
 from django.db import transaction
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -131,9 +132,13 @@ def kreiraj_obucu(request):
 
 
 def sva_obuca(request):
-    obuca = Obuca.objects.all()
-    slike = SlikaObuce.objects.all()
-    return render(request, 'sva_obuca.html', {'obuca': obuca, 'slike': slike})
+    query = request.GET.get('q')
+    if query:
+        obuca = Obuca.objects.filter(Q(naziv__icontains=query))
+    else:
+        obuca = Obuca.objects.all()
+    return render(request, 'sva_obuca.html', {'obuca': obuca})
+
 
 def detalji_obuce(request, pk):
     obuca = Obuca.objects.get(pk=pk)
