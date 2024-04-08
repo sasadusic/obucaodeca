@@ -4,6 +4,16 @@ const menuBtn = document.querySelector(".fa-bars")
 const side = document.querySelector('#side')
 const home = document.querySelector('#home')
 
+// Theme Toggle
+const toggleBtn = document.querySelector('.theme-toggle')
+
+toggleBtn.onclick = () => {
+    toggleBtn.classList.toggle('toggle-dark')
+    side.classList.toggle('side-dark')
+    home.classList.toggle('home-dark')
+    // alert('theme-toggle')
+}
+
 menuBtn.onclick = () => {
     menuBtn.classList.toggle('fa-times')
     side.classList.toggle('active')
@@ -16,18 +26,21 @@ const detailimageNum = detailImages.length
 
 let curImage = 1
 
-arrowleft.onclick = () => {
-    document.querySelector(`.img-detail-${curImage}`).style.display = 'none'
-    curImage--
-    curImage = curImage < 1 ? detailimageNum : curImage
-    document.querySelector(`.img-detail-${curImage}`).style.display = 'block'
+if(arrowleft){
+    arrowleft.onclick = () => {
+        document.querySelector(`.img-detail-${curImage}`).style.display = 'none'
+        curImage--
+        curImage = curImage < 1 ? detailimageNum : curImage
+        document.querySelector(`.img-detail-${curImage}`).style.display = 'block'
+    }
 }
-
-arrowRight.onclick = () => {
-    document.querySelector(`.img-detail-${curImage}`).style.display = 'none'
-    curImage++
-    curImage = curImage > detailimageNum ? 1 : curImage
-    document.querySelector(`.img-detail-${curImage}`).style.display = 'block'
+if(arrowRight){
+    arrowRight.onclick = () => {
+        document.querySelector(`.img-detail-${curImage}`).style.display = 'none'
+        curImage++
+        curImage = curImage > detailimageNum ? 1 : curImage
+        document.querySelector(`.img-detail-${curImage}`).style.display = 'block'
+    }
 }
 
 // Modal
@@ -75,15 +88,6 @@ modalRight.onclick = () => {
     document.querySelector(`.modal-item-${curModalImage}`).style.display = 'block'
 }
 
-// Theme Toggle
-const toggleBtn = document.querySelector('.theme-toggle')
-
-toggleBtn.onclick = () => {
-    toggleBtn.classList.toggle('toggle-dark')
-    side.classList.toggle('side-dark')
-    home.classList.toggle('home-dark')
-    alert('theme-toggle')
-}
 // // Search opcija u sva obuca
 // document.getElementById('search-input').addEventListener('input', function() {
 //     // Čim se unese novo slovo, automatski podnosimo formu

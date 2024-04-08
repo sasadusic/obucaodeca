@@ -64,8 +64,8 @@
     top: 32px;
     right: 32px;
     z-index: 999;
-    background: var(--text);
-    width: 60px;
+    background: #8e8e8e;
+    width: 50px;
     height: 24px;
     border-radius: 12px;
 }
@@ -79,8 +79,8 @@
     left: 3px;
     transition: .5s;
 }
-.toggle-tark .toggle-btn{
-    left: 24px;
+.toggle-dark .toggle-btn{
+    left: 26px;
 }
 #side{
     position: fixed;
@@ -719,13 +719,26 @@ img.img-detail-1{
     font-weight: 700;
 }
 /* Obuca */
+/* Dark Theme */
+/* Side */
 #side.side-dark{
     background: var(--text);
     color: #fff !important;
 }
-#home.home-dark{
-    background: var(--header);
-    color: #fff !important;
+#side.side-dark .nav-link p, 
+#side.side-dark .nav-link i,
+#side.side-dark .logo a,
+#side.side-dark .profile p,
+#side.side-dark .profile i,
+#side.side-dark .done{
+    color: var(--bg-light) !important;
+}
+#side.side-dark .send{
+    color: #fff;
+}
+/* Home */
+#home.home-dark, #home.home-dark .card-details, #home.home-dark .home-up{
+    background: var(--header) !important;
 }
 #home.home-dark .card{
     background: var(--text);
@@ -733,6 +746,13 @@ img.img-detail-1{
 #home.home-dark .input{
     background: var(--text);
 }
+#home.home-dark .phar, #home.home-dark .cena-span, #home.home-dark .span{
+    color: var(--bg-light) !important;
+}
+#home.home-dark .bold{
+    color: #fff !important;
+}
+/* Dark Theme */
 @media (width <= 1600px) {
     .prod-card-cont{
         grid-template-columns: repeat(3, 1fr);
