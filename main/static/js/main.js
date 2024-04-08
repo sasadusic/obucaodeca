@@ -1,7 +1,8 @@
 // alert('test')
-console.log('test')
+// console.log('test')
 const menuBtn = document.querySelector(".fa-bars")
 const side = document.querySelector('#side')
+const home = document.querySelector('#home')
 
 menuBtn.onclick = () => {
     menuBtn.classList.toggle('fa-times')
@@ -37,7 +38,7 @@ const closeImageModal = document.querySelector('.modal-close')
 imageModalOpen.forEach(open => {
 
     open.onclick = () => {
-        console.log('open')
+        // console.log('open')
         if(window.innerWidth > 768){
             imageModal.showModal()
         }
@@ -45,7 +46,7 @@ imageModalOpen.forEach(open => {
 })
 
 closeImageModal.onclick = () => {
-    console.log('close')
+    // console.log('close')
     imageModal.close()
 }
 
@@ -74,8 +75,44 @@ modalRight.onclick = () => {
     document.querySelector(`.modal-item-${curModalImage}`).style.display = 'block'
 }
 
-// Search opcija u sva obuca
-document.getElementById('search-input').addEventListener('input', function() {
-    // Čim se unese novo slovo, automatski podnosimo formu
-    document.getElementById('search-form').submit();
-});
+// Theme Toggle
+const toggleBtn = document.querySelector('.theme-toggle')
+
+toggleBtn.onclick = () => {
+    toggleBtn.classList.toggle('toggle-dark')
+    side.classList.toggle('side-dark')
+    home.classList.toggle('home-dark')
+    alert('theme-toggle')
+}
+// // Search opcija u sva obuca
+// document.getElementById('search-input').addEventListener('input', function() {
+//     // Čim se unese novo slovo, automatski podnosimo formu
+//     document.getElementById('search-form').submit();
+// });
+
+// const search = document.getElementById("search-input")
+// const searchForm = document.getElementById('search-form')
+
+// search.onkeyup = ()=> searchForm.submit()
+
+// window.onscroll = () => {
+//     if (isSearching) return;
+//     const topOfPage = window.pageYOffset || document.documentElement.scrollTop;
+//     const height = document.documentElement.offsetHeight;
+//     const visible = Math.max(0, height - 205 + topOfPage);
+//     let countVisible = 0
+//     Array.from(document.getElementsByClassName('product')).forEach((prod) => {
+//         const prodHeight = prod.clientHeight ;
+//         const prodTop = prod.offsetTop;
+//         if (prodTop < visible && prodTop + prodHeight > visible) {
+//             countVisible++;
+//             prod.classList.add('visible');
+//         } else {
+//             prod.classList.remove('visible');
+//         }
+//     })
+//     document.getElementById('count-of-products').innerHTML = `Prikazano: ${countVisible}/${document.getElementsByClassName('
+//     document.getElementById('count-of-products').innerHTML = `Prikazano: ${countVisible}/${Array.from(document
+//     document.getElementById('count-of-products').innerHTML = `Ukupno proizvoda: ${document.getElementsByClassName('product
+//     document.getElementById('count-of-visibles').innerText = `Prikazano: ${countVisible}/${productsCount}`
+// };}

@@ -59,6 +59,29 @@
 .pnd-24{
     padding: 24px 24px 0px 24px;
 }
+.theme-toggle{
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    z-index: 999;
+    background: var(--text);
+    width: 60px;
+    height: 24px;
+    border-radius: 12px;
+}
+.toggle-btn{
+    position: relative;
+    width: 20px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: .5s;
+}
+.toggle-tark .toggle-btn{
+    left: 24px;
+}
 #side{
     position: fixed;
     left: 0;
@@ -474,6 +497,11 @@ input[type=checkbox]{
 }
 .search-cont .input{
     margin: 0;
+    border-radius: 6px 0 0 6px;
+}
+.search-cont .btn{
+    padding: 8px 20px;
+    border-radius: 0 3px 3px 0;
 }
 .prod-card-cont{
     position: relative;
@@ -615,7 +643,7 @@ input[type=checkbox]{
     display: none;
 }
 .arrow-left{
-    left: -18px;   
+    left: -18px;
 }
 .arrow-right{
     right: -18px;
@@ -688,8 +716,23 @@ img.img-detail-1{
 .footer-left{
     padding-right: auto;
     flex: 1;
+    font-weight: 700;
 }
 /* Obuca */
+#side.side-dark{
+    background: var(--text);
+    color: #fff !important;
+}
+#home.home-dark{
+    background: var(--header);
+    color: #fff !important;
+}
+#home.home-dark .card{
+    background: var(--text);
+}
+#home.home-dark .input{
+    background: var(--text);
+}
 @media (width <= 1600px) {
     .prod-card-cont{
         grid-template-columns: repeat(3, 1fr);
@@ -773,7 +816,7 @@ img.img-detail-1{
         background: transparent;
         filter: blur(10px);
     }
-    .card .card-image, .card .reg-card-img, .card .update-card-img, .card .new-card-img{
+    .card .card-img, .card .reg-card-img, .card .update-card-img, .card .new-card-img{
         display: none;
     }
     .card .card-right{
