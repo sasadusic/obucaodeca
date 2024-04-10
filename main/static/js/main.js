@@ -7,12 +7,26 @@ const home = document.querySelector('#home')
 // Theme Toggle
 const toggleBtn = document.querySelector('.theme-toggle')
 
-toggleBtn.onclick = () => {
-    toggleBtn.classList.toggle('toggle-dark')
-    side.classList.toggle('side-dark')
-    home.classList.toggle('home-dark')
-    // alert('theme-toggle')
+// Provera da li postoji izabrana tema u lokalnom skladištu pregledača
+const savedTheme = localStorage.getItem('theme');
+
+// Ako postoji sačuvana tema, primeni je na stranicu
+if (savedTheme) {
+    document.body.className = savedTheme
 }
+
+toggleBtn.onclick = () => {
+
+    // Provera trenutne teme
+    const currentTheme = document.body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme';
+
+    
+    // Čuvanje izabrane teme u lokalnom skladištu
+    localStorage.setItem('theme', currentTheme);
+
+    const savedTheme = localStorage.getItem('theme');
+    document.body.className = savedTheme
+};
 
 menuBtn.onclick = () => {
     menuBtn.classList.toggle('fa-times')
@@ -57,11 +71,23 @@ imageModalOpen.forEach(open => {
         }
     }
 })
+if(closeImageModal){
 
-closeImageModal.onclick = () => {
-    // console.log('close')
-    imageModal.close()
+    closeImageModal.onclick = () =>  imageModal.close()
 }
+if(imageModal){
+
+    imageModal.onclick = (e) => {
+        // alert('test')
+        const dialogDimensions = imageModal.getBoundingClientRect()
+        if(
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+            ) { imageModal.close()}
+        }
+    }
 
 const modalLeft = document.querySelector('#previous')
 const modalRight = document.querySelector('#next')
@@ -70,6 +96,7 @@ const modalimageNum = modalImages.length
 
 let curModalImage = 1
 
+if(modalLeft){
 modalLeft.onclick = () => {
     // alert('left')
     // console.log('left')
@@ -78,15 +105,18 @@ modalLeft.onclick = () => {
     curModalImage = curModalImage < 1 ? modalimageNum : curModalImage
     document.querySelector(`.modal-item-${curModalImage}`).style.display = 'block'
 }
-
-modalRight.onclick = () => {
-    // alert('left')
-    // console.log('left')
-    document.querySelector(`.modal-item-${curModalImage}`).style.display = 'none'
-    curModalImage++
-    curModalImage = curModalImage > modalimageNum ? 1 : curModalImage
-    document.querySelector(`.modal-item-${curModalImage}`).style.display = 'block'
 }
+ if(modalRight){
+
+     modalRight.onclick = () => {
+         // alert('left')
+         // console.log('left')
+         document.querySelector(`.modal-item-${curModalImage}`).style.display = 'none'
+         curModalImage++
+         curModalImage = curModalImage > modalimageNum ? 1 : curModalImage
+         document.querySelector(`.modal-item-${curModalImage}`).style.display = 'block'
+        }
+    }
 
 // // Search opcija u sva obuca
 // document.getElementById('search-input').addEventListener('input', function() {

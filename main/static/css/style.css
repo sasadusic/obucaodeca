@@ -11,6 +11,7 @@
     --text: #4e4e4e;
     --label: #6e6e6e;
     --border: #8f8f8f;
+    --dark-theme-border: #8e8e8e;
     --bg-light: #ddd;
     --space-big: 32px;
     --space-mid: 24px;
@@ -79,7 +80,7 @@
     left: 3px;
     transition: .5s;
 }
-.toggle-dark .toggle-btn{
+.dark-theme .toggle-btn{
     left: 26px;
 }
 #side{
@@ -228,9 +229,10 @@
     top: 0;
     right: 0;
     height: calc(100vh - 105px);
+    height: 100%;
     width: 60%;
     margin-left: auto;
-    background: linear-gradient(var(--main-trans-01), var(--main-trans-03));
+    background: linear-gradient(90deg, var(--main-trans-01), var(--main-trans-04));
     filter: blur(100px);
 }
 .home-up{
@@ -501,7 +503,7 @@ input[type=checkbox]{
 }
 .search-cont .btn{
     padding: 8px 20px;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 6px 6px 0;
 }
 .prod-card-cont{
     position: relative;
@@ -586,7 +588,7 @@ input[type=checkbox]{
 #card-datails > .card-right {
     flex: 1;
 }
-#card-datails .card-header{
+#card-datails .details-card-header{
     font-size: 60px;
     color: var(--main);
 }
@@ -721,36 +723,56 @@ img.img-detail-1{
 /* Obuca */
 /* Dark Theme */
 /* Side */
-#side.side-dark{
+.dark-theme #side{
     background: var(--text);
     color: #fff !important;
+    border-right: 1px solid var(--label);
 }
-#side.side-dark .nav-link p, 
-#side.side-dark .nav-link i,
-#side.side-dark .logo a,
-#side.side-dark .profile p,
-#side.side-dark .profile i,
-#side.side-dark .done{
+
+.dark-theme #side .nav-link p, 
+.dark-theme #side .nav-link i,
+.dark-theme #side .logo a,
+.dark-theme #side .profile p,
+.dark-theme #side .profile i,
+.dark-theme .down-phar, 
+.dark-theme #side .done{
     color: var(--bg-light) !important;
 }
-#side.side-dark .send{
+.dark-theme #side .send,
+.dark-theme .header{
     color: #fff;
 }
 /* Home */
-#home.home-dark, #home.home-dark .card-details, #home.home-dark .home-up{
+.dark-theme #home, .dark-theme #home .card-details, .dark-theme #home .home-up{
     background: var(--header) !important;
 }
-#home.home-dark .card{
+.dark-theme #home .card, .dark-theme #home .home-down{
     background: var(--text);
 }
-#home.home-dark .input{
+.dark-theme #home .input{
     background: var(--text);
+    outline: 2px solid var(--label);
+    color: var(--bg-light);
 }
-#home.home-dark .phar, #home.home-dark .cena-span, #home.home-dark .span{
+.dark-theme #home .phar, 
+.dark-theme #home .home-phar, 
+.dark-theme #home .cena-span, 
+.dark-theme #home .span, 
+.dark-theme label{
     color: var(--bg-light) !important;
 }
-#home.home-dark .bold{
+.dark-theme #home .bold, .dark-theme .home-header, .dark-theme .card-header, .dark-theme .footer-left{
     color: #fff !important;
+}
+.dark-theme #card-datails .phar,
+.dark-theme .color-cont,
+.dark-theme .cena-cont{
+    border-bottom: 1px solid var(--border);
+}
+.dark-theme .footer-left,
+.dark-theme .loc,
+.dark-theme .settings{
+    border: 1px solid var(--border);
 }
 /* Dark Theme */
 @media (width <= 1600px) {

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block body %}
+<div id="home-over" class="home-over"></div>
     {% if messages%}
     <div class="card-cont">
         {% for m in messages %}
@@ -38,7 +39,7 @@
         </div>
         <div class="card-right">
             <div class="card-top">
-                <h2 class="card-header">
+                <h2 class="details-card-header">
                     {{ obuca.naziv }}
                 </h2>
             </div>
