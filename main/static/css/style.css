@@ -176,8 +176,26 @@
     font-size: 14px;
     color: var(--text);
     font-weight: 500;
-    padding-left: 24px;
+    padding: 0 12px;
     /* background: var(--main); */
+}
+.korpa{
+    position: relative;
+}
+.item-num{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    background: var(--danger);
+    border-radius: 50%;
+    color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-sm);
+    font-weight: 500;
 }
 .send{
     position: relative;
@@ -189,6 +207,9 @@
     background: var(--main);
     margin-bottom: 24px;
     border-radius: 3px;
+}
+.done i, .send i{
+    width: 40px;
 }
 .profile{
     position: relative;
@@ -202,7 +223,6 @@
 .profile p{
     font-size: var(--font-mid);
     position: relative;
-    right: 20px;
     font-weight: 700;
 }
 .profile i{
@@ -773,6 +793,10 @@ img.img-detail-1{
 .dark-theme .loc,
 .dark-theme .settings{
     border: 1px solid var(--border);
+}
+.dark-theme .done i,
+.dark-theme .send i{
+    color: var(--bg-light);
 }
 /* Dark Theme */
 @media (width <= 1600px) {
