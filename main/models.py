@@ -9,6 +9,12 @@ class Marka(models.Model):
 
     def __str__(self):
         return self.imeMarke
+    
+class Tip(models.Model):
+    tip = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.tip
 
 class Boja(models.Model):
     boja = models.CharField(max_length=50, unique=True)
@@ -49,6 +55,13 @@ def delete_slikaobuce_file(sender, instance, **kwargs):
         if os.path.isfile(instance.slika.path):
             os.remove(instance.slika.path)
 
+@receiver(post_delete, sender=SlikaOdece)
+def delete_slikaodece_file(sender, instance, **kwargs):
+    # Delete file from filesystem when corresponding `SlikaObuce` object is deleted.
+    if instance.slika:
+        if os.path.isfile(instance.slika.path):
+            os.remove(instance.slika.path)
+
 class Obuca(models.Model):
     naziv = models.CharField(max_length=100)
     sifra = models.PositiveIntegerField(null=True, blank=True, unique=True)
@@ -67,13 +80,14 @@ class Obuca(models.Model):
 class Odeca(models.Model):
     naziv = models.CharField(max_length=100)
     sifra = models.PositiveIntegerField(null=True, blank=True, unique=True)
-    tip = models.CharField(max_length=100)
+    tip = models.ForeignKey(Tip, on_delete=models.CASCADE)
     cena = models.PositiveIntegerField()
     marka = models.ForeignKey(Marka, on_delete=models.CASCADE)
     boja = models.ManyToManyField(Boja)
     velicina = models.ManyToManyField(VelicinaOdece)
     stanje = models.CharField(max_length=50)
     opis = models.TextField()
+    glavnaSlika = models.ImageField(upload_to='odeca_slike', null=True, blank=True)
     slike = models.ManyToManyField(SlikaOdece, related_name='odece')
 
     def __str__(self):

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
-from .forms import ObucaForm, ObucaFormSet
+from .forms import ObucaForm, ObucaFormSet, OdecaForm, OdecaFormSet
 from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce, NacinKupovine
 from django.db import transaction
 from django.db.models import Q
@@ -152,6 +152,49 @@ def obrisi_obucu(request, pk):
     obuca.delete()
     slike.delete()
     return redirect('sva_obuca')
+
+def kreiraj_odecu(request):
+    if request.method == 'POST':
+        form = OdecaForm(request.POST, request.FILES)
+        formset = OdecaFormSet(request.POST, request.FILES)
+        if form.is_valid() and formset.is_valid():
+            with transaction.atomic():
+                odeca = form.save()
+                formset.instance = odeca
+                formset.save()
+                # Sačuvajte boje povezane sa obućom
+                odeca.boja.set(form.cleaned_data['boja'])
+                # Sačuvajte veličine povezane sa obućom
+                odeca.velicina.set(form.cleaned_data['velicina'])
+            messages.success(request, 'Odeća je uspešno dodata.')
+            return redirect('sva_odeca')
+        else:
+            messages.error(request, 'Došlo je do greške. Molimo pokušajte ponovo.')
+    else:
+        form = OdecaForm()
+        formset = OdecaFormSet()
+    return render(request, 'kreiraj_odecu.html', {'form': form, 'formset': formset})
+
+def sva_odeca(request):
+    query = request.GET.get('q')
+    if query:
+        odeca = Odeca.objects.filter(Q(naziv__icontains=query))
+    else:
+        odeca = Odeca.objects.all()
+    return render(request, 'sva_odeca.html', {'odeca': odeca})
+
+def detalji_odece(request, pk):
+    odeca = Odeca.objects.get(pk=pk)
+    slike = SlikaOdece.objects.filter(odeca=odeca)
+    nacin = NacinKupovine.objects.get(naziv='Za-obucu')
+    return render(request, 'detalji_odece.html', {'odeca': odeca, 'slike':  slike, 'nacin': nacin})
+
+def obrisi_odecu(request, pk):
+    odeca = Odeca.objects.get(pk=pk)
+    slike = SlikaOdece.objects.filter(odeca=odeca)
+    odeca.delete()
+    slike.delete()
+    return redirect('sva_odeca')
 
 @login_required(login_url='login_user')
 def korpa(request):

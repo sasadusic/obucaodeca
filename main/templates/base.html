@@ -34,7 +34,7 @@
                     Obuca
                 </p>
             </a>
-            <a class="nav-link" href="#"><i class="fa-solid fa-shirt"></i>
+            <a class="nav-link" href="{% url 'sva_odeca' %}"><i class="fa-solid fa-shirt"></i>
                 <p>
                     Odeca
                 </p>
@@ -48,6 +48,11 @@
                 <a class="nav-link" href="{% url 'kreiraj_obucu' %}"><i class="fa-solid fa-plus"></i>
                     <p>
                         Dodaj Obucu
+                    </p>
+                </a>
+                <a class="nav-link" href="{% url 'kreiraj_odecu' %}"><i class="fa-solid fa-plus"></i>
+                    <p>
+                        Dodaj Odecu
                     </p>
                 </a>
             {% endif %}
