@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block body %}
+<div id="home-over" class="home-over"></div>
     {% if messages%}
     <div class="card-cont">
         {% for m in messages %}
@@ -10,7 +11,7 @@
     </div>
     {% endif %}
 <!-- Main -->
-<h1 class="header pnd-24">Vasa Korpa</h1>
+<h1 class="header pnd-24">Vasa korpa</h1>
 <div class="prod-card-cont">
     {% for o in obuca %}
     <!-- Card -->
@@ -40,7 +41,7 @@
             <div class="footer-left">
                 {{ o.cena }}€
             </div>
-            <div class="loc"><i class="fa-solid fa-location-dot"></i>
+            <div class="loc"><i class="fa-solid fa-shoe-prints"></i></i>
             </div>
             <div class="settings"><i class="fa-solid fa-gear"></i>
             </div>

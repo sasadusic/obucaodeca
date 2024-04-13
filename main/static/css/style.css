@@ -168,6 +168,7 @@
 .profile-info{
     position: relative;
     width: 100%;
+    margin-bottom: ;
 }
 .done{
     display: block;
@@ -183,8 +184,8 @@
 }
 .item-num{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    left: 210px;
     width: 18px;
     height: 18px;
     background: var(--danger);
@@ -793,9 +794,12 @@ img.img-detail-1{
 }
 .dark-theme .footer-left,
 .dark-theme .loc,
+.dark-theme .settings{
+    border: 1px solid var(--border);
+}
 .dark-theme .settings i,
 .dark-theme .loc i{
-    border: 1px solid var(--border);
+    color: var(--bg-light);
 }
 .dark-theme .done i,
 .dark-theme .send i{

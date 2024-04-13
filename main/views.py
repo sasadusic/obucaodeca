@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
 from .forms import ObucaForm, ObucaFormSet, OdecaForm, OdecaFormSet
-from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce, NacinKupovine
+from .models import Obuca, Odeca, SlikaObuce, SlikaOdece, Boja, VelicinaObuce, NacinKupovine, Praćenje
 from django.db import transaction
 from django.db.models import Q
 
@@ -142,9 +142,10 @@ def sva_obuca(request):
 
 def detalji_obuce(request, pk):
     obuca = Obuca.objects.get(pk=pk)
+    prati_obuca = obuca.praćenje_set.filter(korisnik=request.user).exists() if request.user.is_authenticated else False
     slike = SlikaObuce.objects.filter(obuca=obuca)
     nacin = NacinKupovine.objects.get(naziv='Za-obucu')
-    return render(request, 'detalji_obuce.html', {'obuca': obuca, 'slike':  slike, 'nacin': nacin})
+    return render(request, 'detalji_obuce.html', {'obuca': obuca, 'slike':  slike, 'nacin': nacin, 'prati_obuca': prati_obuca})
 
 def obrisi_obucu(request, pk):
     obuca = Obuca.objects.get(pk=pk)
@@ -197,9 +198,24 @@ def obrisi_odecu(request, pk):
     return redirect('sva_odeca')
 
 @login_required(login_url='login_user')
+def prati_obucu(request, pk):
+    obuca = get_object_or_404(Obuca, pk=pk)
+    obuca.prati(request.user)
+    return redirect('detalji_obuce', pk=pk)
+
+@login_required(login_url='login_user')
+def odprati_obucu(request, pk):
+    obuca = get_object_or_404(Obuca, pk=pk)
+    obuca.odprati(request.user)
+    return redirect('detalji_obuce', pk=pk)
+
+@login_required(login_url='login_user')
 def korpa(request):
-    obuca = Obuca.objects.all()
-    slike = SlikaObuce.objects.all()
-    return  render(request, 'korpa.html', {'obuca': obuca, 'slike':  slike})
+    # obuca = request.user.praćenje_set.all()
+    obuca_ids = Praćenje.objects.filter(korisnik=request.user, prati=True, obuca__isnull=False).values_list('obuca', flat=True)
+    obuca = Obuca.objects.filter(id__in=obuca_ids)
+    for o in obuca:
+        print(o.naziv)
+    return  render(request, 'korpa.html', {'obuca': obuca})
 
 lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, dolorum? Quam sed earum nostrum, amet fuga vel quod pariatur accusamus.'

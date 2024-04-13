@@ -74,6 +74,12 @@ class Obuca(models.Model):
     glavnaSlika = models.ImageField(upload_to='obuca_slike', null=True, blank=True)
     slike = models.ManyToManyField(SlikaObuce, related_name='obuce', null=True, blank=True)
 
+    def prati(self, korisnik):
+        Praćenje.objects.get_or_create(korisnik=korisnik, obuca=self)
+    
+    def odprati(self, korisnik):
+        Praćenje.objects.filter(korisnik=korisnik, obuca=self).delete()
+
     def __str__(self):
         return self.naziv
 
@@ -90,6 +96,12 @@ class Odeca(models.Model):
     glavnaSlika = models.ImageField(upload_to='odeca_slike', null=True, blank=True)
     slike = models.ManyToManyField(SlikaOdece, related_name='odece')
 
+    def prati(self, korisnik):
+        Praćenje.objects.get_or_create(korisnik=korisnik, odeca=self)
+    
+    def odprati(self, korisnik):
+        Praćenje.objects.filter(korisnik=korisnik, odeca=self).delete()
+
     def __str__(self):
         return self.naziv
     
@@ -99,3 +111,12 @@ class NacinKupovine(models.Model):
 
     def __str__(self):
         return self.naziv
+    
+class Praćenje(models.Model):
+    korisnik = models.ForeignKey(User, on_delete=models.CASCADE)
+    obuca = models.ForeignKey(Obuca, on_delete=models.CASCADE, null=True, blank=True)
+    odeca = models.ForeignKey(Odeca, on_delete=models.CASCADE, null=True, blank=True)
+    prati = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.korisnik.username} prati {self.obuca or self.odeca}'

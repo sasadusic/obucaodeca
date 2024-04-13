@@ -16,6 +16,8 @@ urlpatterns = [
     path('sva_obuca/', views.sva_obuca, name='sva_obuca'),
     path('detalji_obuce/<int:pk>/', views.detalji_obuce, name='detalji_obuce'),
     path('obrisi_obucu/<int:pk>/', views.obrisi_obucu, name='obrisi_obucu'),
+    path('prati_obucu/<int:pk>/', views.prati_obucu, name='prati_obucu'),
+    path('odprati_obucu/<int:pk>/', views.odprati_obucu, name='odprati_obucu'),
 
     # Odeca
     path('kreiraj_odecu/', views.kreiraj_odecu, name='kreiraj_odecu'),
