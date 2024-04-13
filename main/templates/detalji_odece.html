@@ -45,7 +45,7 @@
             </div>
         <div class="card-body">
             <p class="phar big mb-12"><span class="bold">Sifra:</span>{{ odeca.sifra }}</p>
-            <p class="phar big mb-12"><span class="bold">Tip:</span>{{ odeca.mtip }}</p>
+            <p class="phar big mb-12"><span class="bold">Tip:</span>{{ odeca.tip }}</p>
             <p class="phar big mb-12"><span class="bold">Marka:</span>{{ odeca.marka }}</p>
             <div class="color-cont mb-12"><div class="boje bold">Dostupne boje:</div>
                 {% for boja in odeca.boja.all %}
@@ -57,12 +57,12 @@
                 <div class="span">{{ velicina }}</div>{% if not forloop.last %} {% endif %}
                 {% endfor %}
             </div>
-            <p class="phar opis mb-12"><span class="bold">Opis:</span>{{ obuca.opis }}</p>
+            <p class="phar opis mb-12"><span class="bold">Opis:</span>{{ odeca.opis }}</p>
             <div class="cena-cont"><span class="cena-span">Cena:</span><span class="cena bold">{{ odeca.cena }}€</span></div>
             <p class="phar opis"><span class="bold">Nacin kupovine:</span>{{ nacin.text }}</p>
             <button class="btn btn-color mt-24">Dodaj u Korpu <i class="fa-solid fa-cart-plus" style="color: #fff;"></i></button>
             {% if user.is_superuser %}
-            <a href="{% url 'obrisi_odecu' obuca.pk %}" class="btn btn-danger mt-12 mb-12"  onclick="return confirm('Jesi li siguran');">Obrisi Artikal</a>
+            <a href="{% url 'obrisi_odecu' odeca.pk %}" class="btn btn-danger mt-12 mb-12"  onclick="return confirm('Jesi li siguran');">Obrisi Artikal</a>
             {% endif %}
         </div>
     </div>
