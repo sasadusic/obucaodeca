@@ -211,11 +211,11 @@ def odprati_obucu(request, pk):
 
 @login_required(login_url='login_user')
 def korpa(request):
-    # obuca = request.user.praćenje_set.all()
-    obuca_ids = Praćenje.objects.filter(korisnik=request.user, prati=True, obuca__isnull=False).values_list('obuca', flat=True)
-    obuca = Obuca.objects.filter(id__in=obuca_ids)
+    obuca = request.user.praćenje_set.all()
+    # obuca_ids = Praćenje.objects.filter(korisnik=request.user, prati=True, obuca__isnull=False).values_list('obuca', flat=True)
+    # obuca = Obuca.objects.filter(id__in=obuca_ids)
     for o in obuca:
-        print(o.naziv)
+        print(o.obuca.cena)
     return  render(request, 'korpa.html', {'obuca': obuca})
 
 lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, dolorum? Quam sed earum nostrum, amet fuga vel quod pariatur accusamus.'
