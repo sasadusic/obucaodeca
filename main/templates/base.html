@@ -65,7 +65,7 @@
                     Moja Korpa
                 </p>
                 {% if request.user.praćenje_set.all %}
-                <div class="item-num">{{ request.user.praćenje_set.all.lenght }}</div>
+                <div class="item-num">{{ request.user.praćenje_set.all|length }}</div>
                 {% endif %}
             </a>
             <a class="nav-link {% if request.path == '/logout/' %}nav-active{% endif %}" href="{% url 'logout' %}"><i class="fa-solid fa-user-large-slash"></i>
